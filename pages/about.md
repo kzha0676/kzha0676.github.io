@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-weight: 3
+weight: 1
 ---
 
 Hi I am **{{ site.author.name }}** :wave:,<br>
