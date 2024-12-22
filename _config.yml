@@ -4,7 +4,7 @@ description         : >-
 
                       Data Analyst,
                       
-                      {% include elements/highlight.html text="I am highlighted text." %}
+                      and never broke production.
 baseurl             : ""            # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository          : kzha0676/kzha0676      # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 remote_theme        : yousinix/portfolYOU
