@@ -1,7 +1,0 @@
-- name: Python
-  percentage: 7 years
-  color: info
-
-- name: Azure
-  percentage: 20
-  color: success
