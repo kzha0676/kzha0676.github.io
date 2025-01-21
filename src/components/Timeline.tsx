@@ -23,9 +23,9 @@ function Timeline() {
           >
             <h3 className="vertical-timeline-element-title">The University of Texas</h3>
             <h4 className="vertical-timeline-element-subtitle">Austin, TX</h4>
-            {/* <p>
-              Full-stack Web Development, GenAI/LLM, Project Management, Business Development
-            </p> */}
+            <p>
+                Graduated from The University of Texas at Austin with a Bachelor of Business Administration (BBA) in Management Information Systems (MIS).
+            </p>
           </VerticalTimelineElement>
           {/* <VerticalTimelineElement
             className="vertical-timeline-element--work"
