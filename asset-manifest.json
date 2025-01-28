@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/kzha0676/static/css/main.0a75e171.css",
-    "main.js": "/kzha0676/static/js/main.4a7b9634.js",
-    "static/js/453.db84eba9.chunk.js": "/kzha0676/static/js/453.db84eba9.chunk.js",
-    "static/media/video_game.jpg": "/kzha0676/static/media/video_game.a15c027abe2ad4382eeb.jpg",
-    "static/media/bg-light.png": "/kzha0676/static/media/bg-light.bac0efb485244a522981.png",
-    "static/media/bg-dark.png": "/kzha0676/static/media/bg-dark.f420c6b8458af72de935.png",
-    "static/media/mentalhealth.jpg": "/kzha0676/static/media/mentalhealth.8ae686a8a207a6524008.jpg",
-    "static/media/profilepic.jpg": "/kzha0676/static/media/profilepic.c2ad584673514adf765b.jpg",
-    "static/media/house.jpeg": "/kzha0676/static/media/house.d7c6735caddd8bdafa89.jpeg",
-    "static/media/coffeeshop.jpg": "/kzha0676/static/media/coffeeshop.818d2c714d538cd501eb.jpg",
-    "static/media/churn.jpg": "/kzha0676/static/media/churn.5c64c20d71697a14cc71.jpg",
-    "static/media/motorcycle.jpg": "/kzha0676/static/media/motorcycle.aff21b2e5ce1bbc12a44.jpg",
-    "static/media/lacrimes.jpg": "/kzha0676/static/media/lacrimes.63bc391f06249de5ded7.jpg",
-    "static/media/ngo_project_image.jpg": "/kzha0676/static/media/ngo_project_image.7818994be3ff3510ead1.jpg",
-    "index.html": "/kzha0676/index.html",
-    "main.0a75e171.css.map": "/kzha0676/static/css/main.0a75e171.css.map",
-    "main.4a7b9634.js.map": "/kzha0676/static/js/main.4a7b9634.js.map",
-    "453.db84eba9.chunk.js.map": "/kzha0676/static/js/453.db84eba9.chunk.js.map"
+    "main.css": "/kzha0676.github.io/static/css/main.86921e9a.css",
+    "main.js": "/kzha0676.github.io/static/js/main.e3d48667.js",
+    "static/js/453.db84eba9.chunk.js": "/kzha0676.github.io/static/js/453.db84eba9.chunk.js",
+    "static/media/video_game.jpg": "/kzha0676.github.io/static/media/video_game.a15c027abe2ad4382eeb.jpg",
+    "static/media/bg-light.png": "/kzha0676.github.io/static/media/bg-light.bac0efb485244a522981.png",
+    "static/media/bg-dark.png": "/kzha0676.github.io/static/media/bg-dark.f420c6b8458af72de935.png",
+    "static/media/mentalhealth.jpg": "/kzha0676.github.io/static/media/mentalhealth.8ae686a8a207a6524008.jpg",
+    "static/media/profilepic.jpg": "/kzha0676.github.io/static/media/profilepic.c2ad584673514adf765b.jpg",
+    "static/media/house.jpeg": "/kzha0676.github.io/static/media/house.d7c6735caddd8bdafa89.jpeg",
+    "static/media/coffeeshop.jpg": "/kzha0676.github.io/static/media/coffeeshop.818d2c714d538cd501eb.jpg",
+    "static/media/churn.jpg": "/kzha0676.github.io/static/media/churn.5c64c20d71697a14cc71.jpg",
+    "static/media/motorcycle.jpg": "/kzha0676.github.io/static/media/motorcycle.aff21b2e5ce1bbc12a44.jpg",
+    "static/media/lacrimes.jpg": "/kzha0676.github.io/static/media/lacrimes.63bc391f06249de5ded7.jpg",
+    "static/media/ngo_project_image.jpg": "/kzha0676.github.io/static/media/ngo_project_image.7818994be3ff3510ead1.jpg",
+    "index.html": "/kzha0676.github.io/index.html",
+    "main.86921e9a.css.map": "/kzha0676.github.io/static/css/main.86921e9a.css.map",
+    "main.e3d48667.js.map": "/kzha0676.github.io/static/js/main.e3d48667.js.map",
+    "453.db84eba9.chunk.js.map": "/kzha0676.github.io/static/js/453.db84eba9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a75e171.css",
-    "static/js/main.4a7b9634.js"
+    "static/css/main.86921e9a.css",
+    "static/js/main.e3d48667.js"
   ]
 }
