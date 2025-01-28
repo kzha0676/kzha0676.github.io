@@ -7,8 +7,8 @@
     gap: 30px;
     justify-content: flex-start;
     align-items: center;
-    width: calc(100% - 57px);
-    padding: 0px 10%;
+    width: 100%;
+    padding: 0px 15%;
     min-height: 700px;
     background-image: url("../images/bg-dark.png");
     background-repeat: no-repeat;
@@ -51,6 +51,7 @@
 
 .about-section .image-wrapper {
     z-index: 2;
+    padding-left: 10%;
     img {
         width: 150px;
         border-radius: 50%;
@@ -134,7 +135,7 @@
         }
 
         .about-section {
-
+            padding-top: 150px;
             display: block;
             padding-left: 0px;
             padding-right: 0px;

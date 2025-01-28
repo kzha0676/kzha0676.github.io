@@ -2,20 +2,14 @@ import React from "react";
 import '../assets/styles/Expertise.scss';
 import Stack from '@mui/material/Stack';
 import { Col } from "react-bootstrap";
-import {
-  SiTableau,
-  SiPython,
-  SiPostgresql 
-} from "react-icons/si";
-import {
-    PiMicrosoftExcelLogo
-  } from "react-icons/pi";
+import { SiTableau, SiPython, SiPostgresql } from "react-icons/si";
+import { PiMicrosoftExcelLogo } from "react-icons/pi";
 
 const Expertise = () => {
   return (
     <div className="skills-container" id= "expertise" >
             <h1>Skills</h1>
-            <div className="container" style={{ marginTop: '0px' }}>
+            <div className="container">
                 <Stack 
                     spacing={{ xs: 3, sm: 6 }}
                     direction="row"

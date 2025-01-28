@@ -111,10 +111,12 @@ h3 {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    overflow: hidden;
 }
 
 .project-content img {
     width: 100%; /* Ensure the image scales properly */
+    object-fit: cover; 
     
 }
 
@@ -125,11 +127,13 @@ h3 {
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100%;
-    padding: 10px;
+    width: 95%;
+    padding-right: 20px;
+    line-height: 1.5;
     margin: 10px;
     color: white;
     font-size: 1rem;
+    overflow: auto;
     opacity: 0; /* Hidden by default */
     text-align: left;   
     transition: opacity 0s ease-out; /* Smooth transitions */

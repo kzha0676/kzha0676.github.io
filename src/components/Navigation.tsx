@@ -149,9 +149,9 @@ function Navigation({parentToChild, modeChange}: any) {
   // Active section styles
   const getIconColor = (componentId: string) => {
     if (activeSection === componentId) {
-      return parentToChild.mode === 'dark' ? '#fff' : '#000';
+      return parentToChild.mode === 'dark' ? '0d1116' : 'rgba(255, 255, 255, 0.7)';
     }
-    return parentToChild.mode === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgb(0, 0, 0)';
+    return parentToChild.mode === 'dark' ? 'rgba(255, 255, 255, 0.7)' : '0d1116';
     // Changed from 0.5 to 0.7 opacity for better visibility in light mode
   };
 
@@ -162,9 +162,10 @@ function Navigation({parentToChild, modeChange}: any) {
         open={open}
         sx={{
           '& .MuiDrawer-paper': {
-            backgroundColor: parentToChild.mode === 'dark' ? '#1e1e1e' : '#ffffff',
-            // Add a subtle border if needed
-            borderRight: `1px solid ${parentToChild.mode === 'dark' ? '#333333' : '#e0e0e0'}`,
+            backgroundColor: parentToChild.mode === 'dark' ? '#0d1116' : '#ffffff',
+            boxShadow: parentToChild.mode === 'dark'
+              ? '4px 0 6px -1px rgba(0, 0, 0, 0.1)'  // Subtle shadow for dark mode
+              : '4px 0 6px -1px rgba(0, 0, 0, 0.1)',        // Subtle shadow for light mode
           }
         }}
       >
@@ -179,6 +180,7 @@ function Navigation({parentToChild, modeChange}: any) {
                 {
                   margin: '12px',
                   justifyContent: 'center',
+                  color: getIconColor(''),
                 },
                 open && { display: 'none' },
               ]}
@@ -188,7 +190,13 @@ function Navigation({parentToChild, modeChange}: any) {
 
             {open && (
               <DrawerHeader>
-                <IconButton onClick={handleDrawerClose}>
+                <IconButton 
+                  onClick={handleDrawerClose}
+                  sx={[
+                    {
+                      color: getIconColor(''),
+                    },
+                  ]}>
                   {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                 </IconButton>
               </DrawerHeader>
@@ -216,8 +224,8 @@ function Navigation({parentToChild, modeChange}: any) {
                         },
                     activeSection === item.componentId && {
                       backgroundColor: parentToChild.mode === 'dark' 
-                        ? 'rgb(255, 0, 0)' 
-                        : 'rgb(255, 0, 0)',
+                        ? 'rgb(89, 0, 190)' 
+                        : 'rgb(89, 0, 190)',
                     }
                   ]}
                 >
@@ -285,6 +293,7 @@ function Navigation({parentToChild, modeChange}: any) {
                     {
                       minWidth: 0,
                       justifyContent: 'center',
+                      color: getIconColor(''),
                     },
                     open
                       ? {
@@ -300,6 +309,10 @@ function Navigation({parentToChild, modeChange}: any) {
                 <ListItemText
                   primary={parentToChild.mode === 'dark' ? 'Dark Mode' : 'Light Mode'}
                   sx={[
+                    {
+                      color: getIconColor(''), // Add this line to match other text colors
+                      transition: 'all 0.3s',
+                    },
                     open
                       ? {
                           opacity: 1,
