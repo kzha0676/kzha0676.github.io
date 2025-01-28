@@ -17,6 +17,34 @@ code {
   position: relative;
   background-color: #0d1116;
 
+  .layout-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  .content-wrapper {
+    flex: 1;
+    margin-left: calc(56px + 1px); // Initial width for collapsed sidebar + border
+    width: calc(100% - 57px); // 100% minus sidebar width
+    transition: margin-left 0.3s, width 0.3s;
+
+    // When sidebar is open
+    .MuiDrawer-root.MuiDrawer-open ~ & {
+      margin-left: calc(240px + 1px); // Full sidebar width + border
+      width: calc(100% - 241px);
+    }
+  }
+
+  // Make sure content sections take full width
+  #main,
+  #expertise,
+  #history,
+  #project {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 a {
@@ -153,6 +181,34 @@ p, a, h1, h2, h3, h4, h5, label, button {
   .flex-chips .chip-title {
     color: #0d1116;
   }
+}
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.content-wrapper {
+  flex: 1;
+  margin-left: calc(56px + 1px); // Initial width for collapsed sidebar + border
+  width: calc(100% - 57px); // 100% minus sidebar width
+  transition: margin-left 0.3s, width 0.3s;
+
+  // When sidebar is open
+  .MuiDrawer-root.MuiDrawer-open ~ & {
+    margin-left: calc(240px + 1px); // Full sidebar width + border
+    width: calc(100% - 241px);
+  }
+}
+
+// Make sure content sections take full width
+#main,
+#expertise,
+#history,
+#project {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 @media screen {

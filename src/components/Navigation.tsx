@@ -1,122 +1,319 @@
-import React, { useEffect, useState } from "react";
-import AppBar from '@mui/material/AppBar';
+import * as React from 'react';
+import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import LightModeIcon from '@mui/icons-material/LightMode';
+import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import ListIcon from '@mui/icons-material/List';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
+import HomeIcon from '@mui/icons-material/Home';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import DescriptionIcon from '@mui/icons-material/Description';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+
 
 const drawerWidth = 240;
-const navItems = [['Expertise', 'expertise'], ['Timeline', 'timeline'], ['Projects', 'projects']];
+
+const openedMixin = (theme: Theme): CSSObject => ({
+  width: drawerWidth,
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: 'hidden',
+});
+
+const closedMixin = (theme: Theme): CSSObject => ({
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: 'hidden',
+  width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.up('sm')]: {
+    width: `calc(${theme.spacing(8)} + 1px)`,
+  },
+});
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
+
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+  ({ theme }) => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+    boxSizing: 'border-box',
+    variants: [
+      {
+        props: ({ open }) => open,
+        style: {
+          ...openedMixin(theme),
+          '& .MuiDrawer-paper': openedMixin(theme),
+        },
+      },
+      {
+        props: ({ open }) => !open,
+        style: {
+          ...closedMixin(theme),
+          '& .MuiDrawer-paper': closedMixin(theme),
+        },
+      },
+    ],
+  }),
+);
+
+interface NavigationProps {
+  parentToChild: {
+    mode: string;
+  };
+  modeChange: () => void;
+}
+
+interface NavItem {
+  text: string;
+  icon: JSX.Element;
+  componentId: string;
+}
+
+const navItems: NavItem[] = [
+  { text: 'Home', icon: <HomeIcon />, componentId: 'main' },
+  { text: 'Expertise', icon: <PsychologyIcon />, componentId: 'expertise' },
+  { text: 'Timeline', icon: <AccessTimeIcon />, componentId: 'history' },
+  { text: 'Projects', icon: <DescriptionIcon />, componentId: 'project' }
+];
 
 function Navigation({parentToChild, modeChange}: any) {
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
+  const [activeSection, setActiveSection] = React.useState('main');
 
-  const {mode} = parentToChild;
-
-  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
-  const [scrolled, setScrolled] = useState<boolean>(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
+  const handleDrawerOpen = () => {
+    setOpen(true);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const navbar = document.getElementById("navigation");
-      if (navbar) {
-        const scrolled = window.scrollY > navbar.clientHeight;
-        setScrolled(scrolled);
-      }
-    };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const scrollToSection = (section: string) => {
-    console.log(section)
-    const expertiseElement = document.getElementById(section);
-    if (expertiseElement) {
-      expertiseElement.scrollIntoView({ behavior: 'smooth' });
-      console.log('Scrolling to:', expertiseElement);  // Debugging: Ensure the element is found
-    } else {
-      console.error('Element with id "expertise" not found');  // Debugging: Log error if element is not found
+  const scrollToSection = (componentId: string) => {
+    const element = document.getElementById(componentId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   };
 
-  const drawer = (
-    <Box className="navigation-bar-responsive" onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <p className="mobile-menu-top"><ListIcon/>Menu</p>
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item[0]} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }} onClick={() => scrollToSection(item[1])}>
-              <ListItemText primary={item[0]} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const viewHeight = window.innerHeight;
+      const scrollPosition = window.scrollY;
+      
+      // Find the section that's most visible in the viewport
+      navItems.forEach(({ componentId }) => {
+        const element = document.getElementById(componentId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + scrollPosition;
+          // If element is in view and closest to the top of viewport
+          if (elementTop <= scrollPosition + (viewHeight * 0.3)) {
+            setActiveSection(componentId);
+          }
+        }
+      });
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+  
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Active section styles
+  const getIconColor = (componentId: string) => {
+    if (activeSection === componentId) {
+      return parentToChild.mode === 'dark' ? '#fff' : '#000';
+    }
+    return parentToChild.mode === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgb(0, 0, 0)';
+    // Changed from 0.5 to 0.7 opacity for better visibility in light mode
+  };
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar component="nav" id="navigation" className={`navbar-fixed-top${scrolled ? ' scrolled' : ''}`}>
-        <Toolbar className='navigation-bar'>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          {mode === 'dark' ? (
-            <LightModeIcon onClick={() => modeChange()}/>
-          ) : (
-            <DarkModeIcon onClick={() => modeChange()}/>
-          )}
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item[0]} onClick={() => scrollToSection(item[1])} sx={{ color: '#fff' }}>
-                {item[0]}
-              </Button>
-            ))}
+      <Drawer 
+        variant="permanent" 
+        open={open}
+        sx={{
+          '& .MuiDrawer-paper': {
+            backgroundColor: parentToChild.mode === 'dark' ? '#1e1e1e' : '#ffffff',
+            // Add a subtle border if needed
+            borderRight: `1px solid ${parentToChild.mode === 'dark' ? '#333333' : '#e0e0e0'}`,
+          }
+        }}
+      >
+        <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <Box>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={[
+                {
+                  margin: '12px',
+                  justifyContent: 'center',
+                },
+                open && { display: 'none' },
+              ]}
+            >
+              <MenuIcon />
+            </IconButton>
+
+            {open && (
+              <DrawerHeader>
+                <IconButton onClick={handleDrawerClose}>
+                  {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                </IconButton>
+              </DrawerHeader>
+            )}
+            <Divider />
           </Box>
-        </Toolbar>
-      </AppBar>
-      <nav>
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
+
+          <List>
+            {navItems.map((item) => (
+              <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
+                <ListItemButton
+                  onClick={() => scrollToSection(item.componentId)}
+                  sx={[
+                    {
+                      minHeight: 48,
+                      px: 2.5,
+                      transition: 'all 0.3s',
+                    },
+                    open
+                      ? {
+                          justifyContent: 'initial',
+                        }
+                      : {
+                          justifyContent: 'center',
+                        },
+                    activeSection === item.componentId && {
+                      backgroundColor: parentToChild.mode === 'dark' 
+                        ? 'rgb(255, 0, 0)' 
+                        : 'rgb(255, 0, 0)',
+                    }
+                  ]}
+                >
+                  <ListItemIcon
+                    sx={[
+                      {
+                        minWidth: 0,
+                        justifyContent: 'center',
+                        transition: 'all 0.3s',
+                        color: getIconColor(item.componentId),
+                      },
+                      open
+                        ? {
+                            mr: 3,
+                          }
+                        : {
+                            mr: 'auto',
+                          },
+                    ]}
+                  >
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.text}
+                    sx={[
+                      {
+                        transition: 'all 0.3s',
+                        color: getIconColor(item.componentId),
+                      },
+                      open
+                        ? {
+                            opacity: 1,
+                          }
+                        : {
+                            opacity: 0,
+                          },
+                    ]}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+
+          <Box sx={{ marginTop: 'auto' }}>
+            <Divider />
+            <ListItem disablePadding sx={{ display: 'block' }}>
+              <ListItemButton
+                onClick={modeChange}
+                sx={[
+                  {
+                    minHeight: 48,
+                    px: 2.5,
+                  },
+                  open
+                    ? {
+                        justifyContent: 'initial',
+                      }
+                    : {
+                        justifyContent: 'center',
+                      },
+                ]}
+              >
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
+                      justifyContent: 'center',
+                    },
+                    open
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: 'auto',
+                        },
+                  ]}
+                >
+                  {parentToChild.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                </ListItemIcon>
+                <ListItemText
+                  primary={parentToChild.mode === 'dark' ? 'Dark Mode' : 'Light Mode'}
+                  sx={[
+                    open
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                />
+              </ListItemButton>
+            </ListItem>
+          </Box>
+        </Box>
+      </Drawer>
     </Box>
   );
 }
