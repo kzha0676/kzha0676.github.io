@@ -3,47 +3,164 @@
     flex-direction: column;
     padding: 5% 10%;
     text-align: left;
+    justify-items: left !important;
 }
   
 .projects-container .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 50px;
+    
 }
   
 .projects-container .projects-grid .project {
     text-align: left;
+    
 }
   
 .project h2:hover {
     text-decoration: underline;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
-}
-  
-.zoom {
-    border-radius: 5px;
-    transition: transform .2s;
-    margin: 0 auto;
-}
-  
-.zoom:hover {
-    transform: scale(1.05);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
-@media screen {
-    @media (max-width: 700px) {
-        .projects-container {
-            display: block;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
+.my-masonry-grid {
+    display: flex;
+    margin-left: -30px; /* gutter size offset */
+    width: auto;
+}
+.my-masonry-grid_column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+}
   
-        .projects-container .projects-grid {
-            display: block;
-        }
-      
-        .projects-container .projects-grid .project {
-            padding-bottom: 5%;
-        }
+// .my-masonry-grid_column > div {
+//     margin-bottom: 30px;
+//     border: 1.7px solid rgb(89, 0, 190) !important;
+//     box-shadow: 4px 5px 4px 3px rgba(117, 0, 250, 0.37) !important;
+//     opacity: 0.93;
+// }
+
+// .my-masonry-grid_column > div:hover {
+//     opacity: 0.3;
+//     color: rgb(39, 40, 34);
+// }
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+h3 {
+    margin: 10px;
+}
+
+.flex-chips {
+    
+    display: flex; /* Make the container a flexbox */
+    flex-wrap: wrap; /* Allow chips to wrap to the next row if needed */
+    gap: 3px; /* Add spacing between the chips */
+    line-height: 2; /* Keep this as is */
+    margin-top: 10px; /* Proper margin values */
+    margin-bottom: 0px;
+}
+
+.flex-chips .MuiChip-root {
+    margin-right: 0.5em; /* Adds spacing between chips */
+}
+
+.flex-chips .MuiChip-outlined {
+    background-color: #e0e0e0;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.flex-chips .MuiChip-outlined span {
+    color: rgb(39, 40, 34);
+}
+
+.chip {
+    color: rgb(39, 40, 34) !important;
+    background-color: white !important;
+    font-size: 0.8rem !important;
+    height: 25px !important;
+}
+
+.chip span {
+    font-family: "Courier Prime", monospace;
+    color: rgb(39, 40, 34);
+}
+
+.chip svg {
+    height: 15px !important;
+}
+
+.project-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%; /* Adjust to fit your layout */
+    border-radius: 10px; /* Optional, for rounded corners */
+    margin-bottom: 30px;
+    border: 1.7px solid rgb(89, 0, 190) !important;
+    box-shadow: 4px 5px 4px 3px rgba(117, 0, 250, 0.37) !important;
+    opacity: 0.93;
+}
+
+
+.project-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.project-content img {
+    width: 100%; /* Ensure the image scales properly */
+    
+}
+
+
+.project-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    font-size: 1rem;
+    opacity: 0; /* Hidden by default */
+    text-align: left;   
+    transition: opacity 0s ease-out; /* Smooth transitions */
+}
+
+.project-container:hover {
+    opacity: .6;
+    transition: opacity 0.2s ease-in-out;
+
+    .project-content img{
+        opacity: .2;
+        transition: opacity 0.4s ease-in-out;
+    }
+
+    .project-description{
+        opacity: 1;
+    }
+}
+
+@media (max-width: 700px) {
+    .projects-container {
+        display: block;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .projects-container .projects-grid {
+        display: block;
+    }
+    
+    .projects-container .projects-grid .project {
+        padding-bottom: 5%;
     }
 }

@@ -32,9 +32,9 @@ function App() {
         <FadeIn transitionDuration={700}>
             <Main/>
             <Expertise/>
+            {/* <Contact/> */}
             <Timeline/>
             <Project/>
-            {/* <Contact/> */}
         </FadeIn>
         <Footer />
     </div>
