@@ -26,7 +26,7 @@ function App() {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
       }, []);
 
-      return (
+    return (
         <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
             <div className="layout-wrapper">
                 <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
