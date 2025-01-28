@@ -121,45 +121,53 @@ function Navigation({parentToChild, modeChange}: any) {
   };
 
   React.useEffect(() => {
-    // Create an observer for each section
-    const observers: IntersectionObserver[] = [];
-    const options = {
-      threshold: 0.3 // Section is considered active when 30% visible
+    const handleScroll = () => {
+      const viewHeight = window.innerHeight;
+      const scrollPosition = window.scrollY;
+      
+      // Find the section that's most visible in the viewport
+      navItems.forEach(({ componentId }) => {
+        const element = document.getElementById(componentId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + scrollPosition;
+          // If element is in view and closest to the top of viewport
+          if (elementTop <= scrollPosition + (viewHeight * 0.3)) {
+            setActiveSection(componentId);
+          }
+        }
+      });
     };
-
-    navItems.forEach(({ componentId }) => {
-      const element = document.getElementById(componentId);
-      if (element) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActiveSection(componentId);
-            }
-          });
-        }, options);
-
-        observer.observe(element);
-        observers.push(observer);
-      }
-    });
-
-    // Cleanup observers on component unmount
-    return () => {
-      observers.forEach(observer => observer.disconnect());
-    };
-  }, []); // Empty dependency array means this runs once on mount
+  
+    window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+  
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Active section styles
   const getIconColor = (componentId: string) => {
     if (activeSection === componentId) {
       return parentToChild.mode === 'dark' ? '#fff' : '#000';
     }
-    return parentToChild.mode === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)';
+    return parentToChild.mode === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgb(0, 0, 0)';
+    // Changed from 0.5 to 0.7 opacity for better visibility in light mode
   };
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <Drawer variant="permanent" open={open}>
+      <Drawer 
+        variant="permanent" 
+        open={open}
+        sx={{
+          '& .MuiDrawer-paper': {
+            backgroundColor: parentToChild.mode === 'dark' ? '#1e1e1e' : '#ffffff',
+            // Add a subtle border if needed
+            borderRight: `1px solid ${parentToChild.mode === 'dark' ? '#333333' : '#e0e0e0'}`,
+          }
+        }}
+      >
         <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           <Box>
             <IconButton
@@ -208,8 +216,8 @@ function Navigation({parentToChild, modeChange}: any) {
                         },
                     activeSection === item.componentId && {
                       backgroundColor: parentToChild.mode === 'dark' 
-                        ? 'rgba(255, 255, 255, 0.08)' 
-                        : 'rgba(0, 0, 0, 0.08)',
+                        ? 'rgb(255, 0, 0)' 
+                        : 'rgb(255, 0, 0)',
                     }
                   ]}
                 >
@@ -290,7 +298,7 @@ function Navigation({parentToChild, modeChange}: any) {
                   {parentToChild.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
                 </ListItemIcon>
                 <ListItemText
-                  primary={parentToChild.mode === 'dark' ? 'Light Mode' : 'Dark Mode'}
+                  primary={parentToChild.mode === 'dark' ? 'Dark Mode' : 'Light Mode'}
                   sx={[
                     open
                       ? {

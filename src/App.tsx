@@ -28,23 +28,26 @@ function App() {
 
     return (
         <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
-            <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
-            <FadeIn transitionDuration={700}>
-                <div id="main">
-                    <Main/>
+            <div className="layout-wrapper">
+                <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
+                <div className="content-wrapper">
+                    <FadeIn transitionDuration={700}>
+                        <div id="main">
+                            <Main/>
+                        </div>
+                        <div id="expertise">
+                            <Expertise/>
+                        </div>
+                        <div id="history">
+                            <Timeline/>
+                        </div>
+                        <div id="project">
+                            <Project/>
+                        </div>
+                    </FadeIn>
+                    <Footer />
                 </div>
-                <div id="expertise">
-                    <Expertise/>
-                </div>
-                <div id="history">
-                    <Timeline/>
-                </div>
-                <div id="project">
-                    <Project/>
-                </div>
-                {/* <Contact/> */}
-            </FadeIn>
-            <Footer />
+            </div>
         </div>
     );
 }
