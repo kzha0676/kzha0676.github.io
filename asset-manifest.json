@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/kzha0676.github.io/static/css/main.86921e9a.css",
-    "main.js": "/kzha0676.github.io/static/js/main.e3d48667.js",
-    "static/js/453.db84eba9.chunk.js": "/kzha0676.github.io/static/js/453.db84eba9.chunk.js",
-    "static/media/video_game.jpg": "/kzha0676.github.io/static/media/video_game.a15c027abe2ad4382eeb.jpg",
-    "static/media/bg-light.png": "/kzha0676.github.io/static/media/bg-light.bac0efb485244a522981.png",
-    "static/media/bg-dark.png": "/kzha0676.github.io/static/media/bg-dark.f420c6b8458af72de935.png",
-    "static/media/mentalhealth.jpg": "/kzha0676.github.io/static/media/mentalhealth.8ae686a8a207a6524008.jpg",
-    "static/media/profilepic.jpg": "/kzha0676.github.io/static/media/profilepic.c2ad584673514adf765b.jpg",
-    "static/media/house.jpeg": "/kzha0676.github.io/static/media/house.d7c6735caddd8bdafa89.jpeg",
-    "static/media/coffeeshop.jpg": "/kzha0676.github.io/static/media/coffeeshop.818d2c714d538cd501eb.jpg",
-    "static/media/churn.jpg": "/kzha0676.github.io/static/media/churn.5c64c20d71697a14cc71.jpg",
-    "static/media/motorcycle.jpg": "/kzha0676.github.io/static/media/motorcycle.aff21b2e5ce1bbc12a44.jpg",
-    "static/media/lacrimes.jpg": "/kzha0676.github.io/static/media/lacrimes.63bc391f06249de5ded7.jpg",
-    "static/media/ngo_project_image.jpg": "/kzha0676.github.io/static/media/ngo_project_image.7818994be3ff3510ead1.jpg",
-    "index.html": "/kzha0676.github.io/index.html",
-    "main.86921e9a.css.map": "/kzha0676.github.io/static/css/main.86921e9a.css.map",
-    "main.e3d48667.js.map": "/kzha0676.github.io/static/js/main.e3d48667.js.map",
-    "453.db84eba9.chunk.js.map": "/kzha0676.github.io/static/js/453.db84eba9.chunk.js.map"
+    "main.css": "/static/css/main.fcc4c331.css",
+    "main.js": "/static/js/main.315dcbc6.js",
+    "static/js/453.db84eba9.chunk.js": "/static/js/453.db84eba9.chunk.js",
+    "static/media/video_game.jpg": "/static/media/video_game.a15c027abe2ad4382eeb.jpg",
+    "static/media/bg-light.png": "/static/media/bg-light.bac0efb485244a522981.png",
+    "static/media/bg-dark.png": "/static/media/bg-dark.f420c6b8458af72de935.png",
+    "static/media/mentalhealth.jpg": "/static/media/mentalhealth.8ae686a8a207a6524008.jpg",
+    "static/media/profilepic.jpg": "/static/media/profilepic.c2ad584673514adf765b.jpg",
+    "static/media/house.jpeg": "/static/media/house.d7c6735caddd8bdafa89.jpeg",
+    "static/media/coffeeshop.jpg": "/static/media/coffeeshop.818d2c714d538cd501eb.jpg",
+    "static/media/churn.jpg": "/static/media/churn.5c64c20d71697a14cc71.jpg",
+    "static/media/motorcycle.jpg": "/static/media/motorcycle.aff21b2e5ce1bbc12a44.jpg",
+    "static/media/lacrimes.jpg": "/static/media/lacrimes.63bc391f06249de5ded7.jpg",
+    "static/media/ngo_project_image.jpg": "/static/media/ngo_project_image.7818994be3ff3510ead1.jpg",
+    "index.html": "/index.html",
+    "main.fcc4c331.css.map": "/static/css/main.fcc4c331.css.map",
+    "main.315dcbc6.js.map": "/static/js/main.315dcbc6.js.map",
+    "453.db84eba9.chunk.js.map": "/static/js/453.db84eba9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.86921e9a.css",
-    "static/js/main.e3d48667.js"
+    "static/css/main.fcc4c331.css",
+    "static/js/main.315dcbc6.js"
   ]
 }
